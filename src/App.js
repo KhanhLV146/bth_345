@@ -26,7 +26,7 @@ function App() {
       return;
     }
 //hook not merge state?
-let newTodo ={id: 'abc', title:adress, id: 'vuong khanh'}
+let newTodo ={id: Math.floor(Math.random()*1000+1), title:adress, type: 'vuong khanh'}
 setTodos([...todos,newTodo])
 setAdress('')
   }
@@ -35,6 +35,11 @@ setAdress('')
     setAdress(event.target.value)
 
 
+  }
+  const deleteDataTodos =(id)=>{ 
+    let currentTodos =todos
+    currentTodos =currentTodos.filter(item => item.id !==id)
+    setTodos(currentTodos)
   }
   //re-reder
 
@@ -49,10 +54,13 @@ setAdress('')
         <Todo
         todos ={todos}
         title={'All to do'}
+        deleteDataTodos={deleteDataTodos}
         />
-                <Todo
+        <Todo
         todos ={todos.filter(item => item.type ==='nice')}
         title={'nice to do'}
+        deleteDataTodos={deleteDataTodos}
+
         />
          <input type="text " value ={adress} onChange={(event)=> handleOnChangeIput(event)} ></input> 
        <button type ="button" onClick={(event)=>{handleEventClick(event)}}>  click me</button>
