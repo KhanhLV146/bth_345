@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './component/Nav';
-import{useState } from 'react';
+import{useState, useEffect } from 'react';
 import Todo from './component/todo';
+import Covid from './component/covid';
 function App() {
  //state
   let[name, setName ]=useState('Vuong Khanh');
@@ -19,6 +20,10 @@ function App() {
   
       }
   ])
+  useEffect(()=>
+  {
+    console.log("run use effect")
+  })
   const handleEventClick =(event)=>{
     if(!adress)
     {
@@ -36,7 +41,7 @@ setAdress('')
 
 
   }
-  const deleteDataTodos =(id)=>{ 
+  const deleteDataTodos = (id)=>{ 
     let currentTodos =todos
     currentTodos =currentTodos.filter(item => item.id !==id)
     setTodos(currentTodos)
@@ -48,22 +53,22 @@ setAdress('')
       <Nav/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
           <h2> Hello {name}</h2>
-        </p>
-        <Todo
+          <Covid/>
+
+        {/* <Todo
         todos ={todos}
         title={'All to do'}
         deleteDataTodos={deleteDataTodos}
         />
         <Todo
         todos ={todos.filter(item => item.type ==='nice')}
-        title={'nice to do'}
+        title={'nice to do'}  
         deleteDataTodos={deleteDataTodos}
 
         />
          <input type="text " value ={adress} onChange={(event)=> handleOnChangeIput(event)} ></input> 
-       <button type ="button" onClick={(event)=>{handleEventClick(event)}}>  click me</button>
+       <button type ="button" onClick={(event)=>{handleEventClick(event)}}>  click me</button> */}
       </header>
     </div>
   );
