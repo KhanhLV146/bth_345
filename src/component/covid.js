@@ -45,8 +45,7 @@ const Covid = () => {
   };
 
   const saveEdit = (name) => {
-    // Không gửi yêu cầu đến API vì bạn không sở hữu API.
-    // Chỉ cập nhật dữ liệu trên giao diện người dùng.
+
     const updatedDataCovid = dataCovid.map((item) => {
       if (item.name === name) {
         return {
