@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import Nav from './component/Nav';
 import Covid from './component/covid';
-import LoginFormPopup from './component/LoginFormPopup'; // Import component LoginFormPopup
+import LoginFormPopup from './component/LoginFormPopup'; 
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

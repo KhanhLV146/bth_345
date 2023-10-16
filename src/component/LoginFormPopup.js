@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import '../LoginFormPopup.css'
 
 function LoginFormPopup({ onClose, onLogin }) {
   const [username, setUsername] = useState("");
@@ -19,16 +19,18 @@ function LoginFormPopup({ onClose, onLogin }) {
     <div className="login-popup">
       <div className="login-form">
         <h2>Đăng nhập</h2>
-        <label>Tên người dùng:</label>
+  
         <input
           type="text"
+          placeholder="Tên đăng nhập"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label>Mật khẩu:</label>
+
         <input
           type="password"
           value={password}
+          placeholder="Mật khẩu"
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={handleLogin}>Đăng nhập</button>
