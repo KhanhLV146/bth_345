@@ -10,6 +10,13 @@ const Covid = () => {
     case: 0,
     recover: 0,
   });
+  const [newData, setNewData] = useState({
+    name: "",
+    death: 0,
+    treating: 0,
+    case: 0,
+    recover: 0,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +52,6 @@ const Covid = () => {
   };
 
   const saveEdit = (name) => {
-
     const updatedDataCovid = dataCovid.map((item) => {
       if (item.name === name) {
         return {
@@ -66,6 +72,27 @@ const Covid = () => {
   const deleteData = (name) => {
     const updatedDataCovid = dataCovid.filter((item) => item.name !== name);
     setDataCovid(updatedDataCovid);
+  };
+
+  const addData = () => {
+    const newDataCovid = [
+      ...dataCovid,
+      {
+        name: newData.name,
+        death: newData.death,
+        treating: newData.treating,
+        case: newData.case,
+        recover: newData.recover,
+      },
+    ];
+    setDataCovid(newDataCovid);
+    setNewData({
+      name: "",
+      death: 0,
+      treating: 0,
+      case: 0,
+      recover: 0,
+    });
   };
 
   return (
@@ -137,7 +164,7 @@ const Covid = () => {
                 )}
               </td>
               <td>
-                {editingData === item.name ? (
+                {editingData=== item.name ? (
                   <>
                     <button onClick={cancelEdit}>Cancel</button>
                     <button onClick={() => saveEdit(item.name)}>Save</button>
@@ -151,6 +178,56 @@ const Covid = () => {
               </td>
             </tr>
           ))}
+          <tr>
+            <td>
+              <input
+                type="text"
+                value={newData.name}
+                onChange={(e) =>
+                  setNewData({ ...newData, name: e.target.value })
+                }
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                value={newData.death}
+                onChange={(e) =>
+                  setNewData({ ...newData, death: e.target.value })
+                }
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                value={newData.treating}
+                onChange={(e) =>
+                  setNewData({ ...newData, treating: e.target.value })
+                }
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                value={newData.case}
+                onChange={(e) =>
+                  setNewData({ ...newData, case: e.target.value })
+                }
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                value={newData.recover}
+                onChange={(e) =>
+                  setNewData({ ...newData, recover: e.target.value })
+                }
+              />
+            </td>
+            <td>
+              <button onClick={addData}>Add</button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
